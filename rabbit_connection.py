@@ -1,5 +1,6 @@
 import pika
-# https://www.rabbitmq.com/tutorials/tutorial-one-python.html
 
-connection = pika.BlokingConnection('192.168.122.1')
-channel = connection.channel()
+# https://www.rabbitmq.com/tutorials/tutorial-one-python.html
+def rabbit_connection():
+    connection = pika.BlokingConnection('172.17.0.5:5672')
+    channel = connection.channel()
