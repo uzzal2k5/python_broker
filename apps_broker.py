@@ -26,7 +26,8 @@ def send_message_queue():
 def receive_message_queue():
     rb.broker_queue(WEB_QUEUE)
     message = rb.message_consume(WEB_QUEUE)
-    print(message)
+    #print(message)
+    return message
 
 # if receive_from_queue() != '':
 #     cron.read_data(FILE_NAME)

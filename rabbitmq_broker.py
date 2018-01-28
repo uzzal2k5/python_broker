@@ -3,7 +3,7 @@ import sys
 import time
 
 VHOST_NMAE = '/'
-RABBIT_SERVER = "172.17.0.4"
+RABBIT_SERVER = "172.17.0.2"
 EXCHANGE_NAME = "test_exchange"
 QUEUE_NAME = "test_queue"
 USERNAME = "uzzal"
@@ -21,6 +21,7 @@ class RabbitBroker:
                                                 credentials=credentials)
         connection = pika.BlockingConnection(conn_params)
         self.channel = connection.channel()
+        #return channel
 
     # Exchange Declaration
     def broker_exchange(self, exchange):
@@ -61,6 +62,8 @@ class RabbitBroker:
                                    routing_key=queue
                                    )
         print("Message Sent: ", message)
+        # Close Connection
+
 
     def message_consume(self, queue):
         for method_frame, properties, body in self.channel.consume(queue=queue):

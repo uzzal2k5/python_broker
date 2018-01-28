@@ -26,8 +26,8 @@ def send_message_queue():
 def receive_message_queue():
     rbw.broker_queue(APPS_QUEUE)
     message = rbw.message_consume(APPS_QUEUE)
-    print(message)
-    #return message
+    # print(message)
+    return message
 
 
 #
@@ -39,5 +39,7 @@ def receive_message_queue():
 
 # if receive_message_queue() == "b'Message from Web!'":
 #     print("Well done!")
-receive_message_queue()
-#send_message_queue()
+mes = receive_message_queue()
+print(mes)
+
+send_message_queue()
