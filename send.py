@@ -3,9 +3,9 @@ import pika
 # https://www.rabbitmq.com/tutorials/tutorial-one-python.html
 
 
-my_message= "My Message to subscriber "
+my_message= "My Message to subscriber"
 
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='172.17.0.1',
+connection = pika.BlockingConnection(pika.ConnectionParameters(host='172.17.0.4',
                                                                credentials=pika.PlainCredentials('uzzal', 'pass1234')
                                                                )
                                      )

@@ -23,10 +23,6 @@ for method_frame, properties, body in channel.consume('my_queue'):
 requeued_messages = channel.cancel()
 print('Requeued %i message' % requeued_messages)
 
-# channel.basic_consume(exchange='my_exchange',
-#                           queue='my_queue',
-#                           no_ack=True)
-
 
 channel.start_consuming()
 connection.close()
