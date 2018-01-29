@@ -42,4 +42,4 @@ def receive_message_queue():
 mes = receive_message_queue()
 print(mes)
 
-send_message_queue()
+#send_message_queue()

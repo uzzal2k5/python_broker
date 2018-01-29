@@ -1,9 +1,9 @@
 import pika
-import sys
-import time
+import logging
+
 
 VHOST_NMAE = '/'
-RABBIT_SERVER = "172.17.0.2"
+RABBIT_SERVER = "172.17.0.3"
 EXCHANGE_NAME = "test_exchange"
 QUEUE_NAME = "test_queue"
 USERNAME = "uzzal"
@@ -21,7 +21,7 @@ class RabbitBroker:
                                                 credentials=credentials)
         connection = pika.BlockingConnection(conn_params)
         self.channel = connection.channel()
-        #return channel
+        # return channel
 
     # Exchange Declaration
     def broker_exchange(self, exchange):
@@ -64,16 +64,16 @@ class RabbitBroker:
         print("Message Sent: ", message)
         # Close Connection
 
-
     def message_consume(self, queue):
         for method_frame, properties, body in self.channel.consume(queue=queue):
-            #time.sleep(body.count(b'.'))
+            # time.sleep(body.count(b'.'))
             self.channel.basic_ack(delivery_tag=method_frame.delivery_tag)
             return body
 
-
-
-
+    def disconnect_to_rabbitmq(self):
+        self.channel.cancel_consume()
+        pika.connection.close()
+        logging.info('Disconnected from Rabbitmq')
 
     # Display Message
     def view(self):
@@ -91,3 +91,7 @@ class RabbitBroker:
 # rb.send_message(FOLLOW_ME_MESSAGE)
 # rb.message_consume()
 # rb.view()
+
+
+
+

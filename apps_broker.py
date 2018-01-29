@@ -34,4 +34,4 @@ def receive_message_queue():
 # else:
 #     print("No Instruction Found into Message")
 send_message_queue()
-receive_message_queue()
+#receive_message_queue()

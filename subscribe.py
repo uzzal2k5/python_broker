@@ -1,4 +1,7 @@
 import rabbitmq_broker as br_module
+import logging
+logging.basicConfig()
+
 QUEUE_NAME = 'subscription_queue'
 EXCHANGE_NAME = 'subscription_exchange'
 SUBSCRIBE_ME_MESSAGE = 'subscribe me'
@@ -11,6 +14,8 @@ def send_message_queue():
     br.broker_queue(QUEUE_NAME)
     br.bind_queue(exchange="subscription_exchange", queue="subscription_queue")
     br.send_message(EXCHANGE_NAME, QUEUE_NAME, message_body=SUBSCRIBE_ME_MESSAGE)
+    # Close Rabbit Connection
+    #br.connection.close()
 
 send_message_queue()
 
