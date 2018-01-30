@@ -1,0 +1,27 @@
+{rabbitmq_stomp, [
+    {tcp_listeners, [61613]},
+    {ssl_listeners, [61614]},
+    {ssl_options, [
+        {cacertfile, "/etc/ssl/private/host.ca"},
+        {certfile,   "/etc/ssl/private/host.cert"},
+        {keyfile,    "/etc/ssl/private/host.key"},
+        {verify,     verify_none},
+        {fail_if_no_peer_cert, false}
+    ]}
+]},
+
+
+
+
+    https = (window.location.protocol.lastIndexOf('s') != -1)
+    if ("WebSocket" in window) {    // Pure websocket
+        if(https)
+            client = Stomp.client('wss://' + config.host +':'+ config.sslport + '/stomp/websocket');
+        else
+            client = Stomp.client('ws://'  + config.host +':'+ config.port    + '/stomp/websocket');
+
+        console.warn("Using native WebSockets");
+    }
+    else {
+        /* ... */
+
