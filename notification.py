@@ -94,5 +94,5 @@ if __name__ == "__main__":
     stop_tornado();
 
     logging.info('See you...')
-# receive_message_queue()
+receive_message_queue()
 # send_message_queue

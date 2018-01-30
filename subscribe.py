@@ -2,20 +2,38 @@ import rabbitmq_broker as br_module
 import logging
 logging.basicConfig()
 
-QUEUE_NAME = 'subscription_queue'
-EXCHANGE_NAME = 'subscription_exchange'
-SUBSCRIBE_ME_MESSAGE = 'subscribe me'
+NOTIFY_QUEUE = 'notification_queue'
+NOTIFY_EXCHANGE = 'notification_exchange'
+NOTIFY_MESSAGE = 'Notification From Notification Queue! UZZAL'
+
+
+SUBSCRIBE_QUEUE = 'subscription_queue'
+SUBSCRIBE_EXCHANGE = 'subscription_exchange'
+SUBSCRIBE_MESSAGE = 'Subscription Message from Subscription Queue!uuuuuu'
 
 br = br_module.RabbitBroker()
-br.broker_exchange(EXCHANGE_NAME)
 
 
-def send_message_queue():
-    br.broker_queue(QUEUE_NAME)
-    br.bind_queue(exchange="subscription_exchange", queue="subscription_queue")
-    br.send_message(EXCHANGE_NAME, QUEUE_NAME, message_body=SUBSCRIBE_ME_MESSAGE)
+
+def send_notification():
+    br.broker_exchange(NOTIFY_EXCHANGE)
+    br.broker_queue(NOTIFY_QUEUE)
+    br.bind_queue(exchange="notification_exchange", queue="notification_queue")
+    br.send_message(NOTIFY_EXCHANGE, NOTIFY_QUEUE, message_body=NOTIFY_MESSAGE)
     # Close Rabbit Connection
     #br.connection.close()
 
-send_message_queue()
 
+def send_subscription():
+    br.broker_exchange(SUBSCRIBE_EXCHANGE)
+    br.broker_queue(SUBSCRIBE_QUEUE)
+    br.bind_queue(exchange="subscription_exchange", queue="subscription_queue")
+    br.send_message(SUBSCRIBE_EXCHANGE, SUBSCRIBE_QUEUE, message_body=SUBSCRIBE_MESSAGE)
+    # Close Rabbit Connection
+    #br.connection.close()
+
+# Send Notification from APP
+send_notification()
+
+# Send Subscription Request From Web
+#send_subscription()

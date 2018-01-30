@@ -6,8 +6,8 @@ VHOST_NMAE = '/'
 RABBIT_SERVER = "172.17.0.3"
 EXCHANGE_NAME = "test_exchange"
 QUEUE_NAME = "test_queue"
-USERNAME = "uzzal"
-PASSWORD = "pass1234"
+USERNAME = "guest"
+PASSWORD = "guest"
 STOP_PROCESSING_MESSAGE = "QRT"
 
 
@@ -28,7 +28,7 @@ class RabbitBroker:
         self.channel.exchange_declare(exchange=exchange,
                                       exchange_type="fanout",
                                       passive=False,
-                                      durable=False,
+                                      durable=True,
                                       auto_delete=False
                                       )
 
