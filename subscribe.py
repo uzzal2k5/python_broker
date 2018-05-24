@@ -1,3 +1,4 @@
+import pika
 import rabbitmq_broker as br_module
 import logging
 logging.basicConfig()
@@ -12,7 +13,6 @@ SUBSCRIBE_EXCHANGE = 'subscription_exchange'
 SUBSCRIBE_MESSAGE = 'Subscription Message from Subscription Queue!uuuuuu'
 
 br = br_module.RabbitBroker()
-
 
 
 def send_notification():
@@ -31,6 +31,7 @@ def send_subscription():
     br.send_message(SUBSCRIBE_EXCHANGE, SUBSCRIBE_QUEUE, message_body=SUBSCRIBE_MESSAGE)
     # Close Rabbit Connection
     #br.connection.close()
+
 
 # Send Notification from APP
 send_notification()

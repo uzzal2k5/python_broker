@@ -3,7 +3,7 @@ import logging
 
 
 VHOST_NMAE = '/'
-RABBIT_SERVER = "172.17.0.3"
+RABBIT_SERVER = "172.17.0.4"
 EXCHANGE_NAME = "test_exchange"
 QUEUE_NAME = "test_queue"
 USERNAME = "guest"

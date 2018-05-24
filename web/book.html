@@ -79,7 +79,7 @@
         };
 
       // Stomp.js boilerplate
-      var client = Stomp.client('ws://' + '172.17.0.3' + ':25674/ws');
+      var client = Stomp.client('ws://' + '172.17.0.4' + ':15674/ws');
       client.debug = pipe('#second');
 
       var print_first = pipe('#first', function(data) {

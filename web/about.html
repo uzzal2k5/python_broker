@@ -69,7 +69,7 @@
 
     <!-- NOTIFICATION MESSAGE GET -->
     <script>
-      var ws = new WebSocket('ws://' + '172.17.0.3' + ':15674/ws');
+      var ws = new WebSocket('ws://' + '172.17.0.4' + ':15674/ws');
       var client = Stomp.over(ws);
 
       client.debug = function(e) {
@@ -96,7 +96,7 @@
 
 <!--  SUBSCRIPTION MREQUEST SEND -->
       <script>
-      var ws = new WebSocket('ws://' + '172.17.0.3' + ':15674/ws');
+      var ws = new WebSocket('ws://' + '172.17.0.4' + ':15674/ws');
       var client = Stomp.over(ws);
       client.connect('uzzal', 'pass1234',  '/');
       $('#first form').submit(function() {
